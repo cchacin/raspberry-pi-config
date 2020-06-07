@@ -12,8 +12,6 @@ services:
       - POSTGRES_DB=nextcloud
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    networks:
-      - nextcloud_network
 
   redis:
     image: redis:6.0.4-alpine
@@ -21,8 +19,6 @@ services:
     hostname: nextcloud-redis
     restart: always
     # command: bash -c "echo never > /sys/kernel/mm/transparent_hugepage/enabled"
-    networks:
-      - nextcloud_network
 
   nginx:
     image: nginx:1.19.0-alpine
@@ -34,8 +30,6 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - nextcloud
-    networks:
-      - nextcloud_network
 
   nextcloud:
     image: nextcloud:19.0.0-fpm-alpine
@@ -57,8 +51,6 @@ services:
     depends_on:
       - postgres
       - redis
-    networks:
-      - nextcloud_network
 
   pihole:
     container_name: pihole
@@ -84,6 +76,3 @@ services:
     cap_add:
       - NET_ADMIN
     restart: unless-stopped
-
-networks:
-  nextcloud_network:
