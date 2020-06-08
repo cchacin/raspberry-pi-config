@@ -1,1 +1,1 @@
-# ⛴ Docker image of Nextcloud
+# ⛴ Docker images for Raspberry Pi
