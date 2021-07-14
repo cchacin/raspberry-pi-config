@@ -75,8 +75,8 @@ services:
       WEBPASSWORD: admin
     # Volumes store your data between container upgrades
     volumes:
-       - /var/pihole/etc/pihole:/etc/pihole
-       - /var/pihole/etc/dnsmasq.d:/etc/dnsmasq.d
+       - ./pihole/etc/pihole:/etc/pihole
+       - ./pihole/etc/dnsmasq.d:/etc/dnsmasq.d
     dns:
       - 127.0.0.1
       - 1.1.1.1
